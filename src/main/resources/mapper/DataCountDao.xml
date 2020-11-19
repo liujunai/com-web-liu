@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.model.dao.DataCountDao">
+
+	<select id="selectAll" resultType="com.example.demo.model.bean.DataCount">
+    	SELECT id,yy,c_count as cCount FROM data_count_x_y
+	</select>
+
+
+</mapper>
