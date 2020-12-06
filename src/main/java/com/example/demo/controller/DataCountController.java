@@ -18,7 +18,7 @@ public class DataCountController {
 	@Autowired
 	private DataCountService dataCountService;
 
-	@RequestMapping(value = "/datacount.do")
+	@RequestMapping(value = "/view.do")
 	public ModelAndView datacount(){
 		ModelAndView mv = new ModelAndView("view");
 		return mv;
