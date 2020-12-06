@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.model.dao.YyRegionDataDao">
+
+	<select id="selectAll" resultType="com.example.demo.model.bean.YyRegionData" parameterType="java.lang.String">
+		SELECT
+			c_region AS cRegion,
+			SUM( c_count ) AS cCount
+		FROM
+			yy_c_region_data
+		WHERE
+			yy = #{date}
+		GROUP BY cRegion
+		ORDER BY cCount
+	</select>
+
+
+</mapper>

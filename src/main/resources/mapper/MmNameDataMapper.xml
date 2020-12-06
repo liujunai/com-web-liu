@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.model.dao.MmNameDataDao">
+
+	<select id="selectAll" resultType="com.example.demo.model.bean.MmNameData" parameterType="java.lang.String">
+    	SELECT
+			c_name AS cName,
+			SUM( MMCount ) AS mMCount
+		FROM
+			mm_c_name_data
+		WHERE
+			yyMM = #{date}
+		GROUP BY cName
+		ORDER BY mMCount
+	</select>
+
+
+</mapper>

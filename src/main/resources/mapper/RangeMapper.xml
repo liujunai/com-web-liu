@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.model.dao.RangeDao">
+
+	<select id="selectMmNameMaxAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(max_date) AS maxDate
+		FROM mm_range_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY maxDate
+	</select>
+	<select id="selectMmNameMinAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(min_date) AS minDate
+		FROM mm_range_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY minDate
+	</select>
+	<select id="selectMmNameRangeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(range_date) AS rangeDate
+		FROM mm_range_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY rangeDate
+	</select>
+	<select id="selectMmNameMedianAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(SUBSTRING_INDEX(median,'.',1)) AS median
+		FROM mm_median_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY median
+	</select>
+	<select id="selectMmNameModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+		FROM mm_median_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY mode
+	</select>
+
+
+
+	<select id="selectYyNameMaxAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(max_date) AS maxDate
+		FROM yy_range_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY maxDate
+	</select>
+	<select id="selectYyNameMinAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(min_date) AS minDate
+		FROM yy_range_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY minDate
+	</select>
+	<select id="selectYyNameRangeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(range_date) AS rangeDate
+		FROM yy_range_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY rangeDate
+	</select>
+	<select id="selectYyNameMedianAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(SUBSTRING_INDEX(median,'.',1)) AS median
+		FROM yy_median_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY median
+	</select>
+	<select id="selectYyNameModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_name AS cName,
+			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+		FROM yy_median_name_data
+		WHERE yy = #{date}
+		GROUP BY cName
+		ORDER BY mode
+	</select>
+
+
+
+
+
+
+	<select id="selectMmRegionMaxAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_region AS cRegion,
+			SUM(max_date) AS maxDate
+		FROM mm_range_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY maxDate
+	</select>
+	<select id="selectMmRegionMinAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_region AS cRegion,
+			SUM(min_date) AS minDate
+		FROM mm_range_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY minDate
+	</select>
+	<select id="selectMmRegionRangeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+	    SELECT
+			c_region AS cRegion,
+			SUM(range_date) AS rangeDate
+		FROM mm_range_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY rangeDate
+	</select>
+	<select id="selectMmRegionMedianAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_region AS cRegion,
+			SUM(SUBSTRING_INDEX(median,'.',1)) AS median
+		FROM mm_median_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY median
+	</select>
+
+	<select id="selectMmRegionModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_region AS cRegion,
+			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+		FROM mm_median_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY mode
+	</select>
+
+
+
+
+
+	<select id="selectYyRegionMaxAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_region AS cRegion,
+			SUM(max_date) AS maxDate
+		FROM yy_range_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY maxDate
+	</select>
+	<select id="selectYyRegionMinAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_region AS cRegion,
+			SUM(min_date) AS minDate
+		FROM yy_range_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY minDate
+	</select>
+	<select id="selectYyRegionRangeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+	    SELECT
+			c_region AS cRegion,
+			SUM(range_date) AS rangeDate
+		FROM yy_range_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY rangeDate
+	</select>
+	<select id="selectYyRegionMedianAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_region AS cRegion,
+			SUM(SUBSTRING_INDEX(median,'.',1)) AS median
+		FROM yy_median_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY median
+	</select>
+	<select id="selectYyRegionModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_region AS cRegion,
+			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+		FROM yy_median_region_data
+		WHERE yy = #{date}
+		GROUP BY cRegion
+		ORDER BY mode
+	</select>
+
+
+
+
+
+
+	<select id="selectMmDeptMaxAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+    	SELECT
+			c_dept AS cDept,
+			SUM(max_date) AS maxDate
+		FROM mm_range_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY maxDate
+	</select>
+	<select id="selectMmDeptMinAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_dept AS cDept,
+			SUM(min_date) AS minDate
+		FROM mm_range_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY minDate
+	</select>
+	<select id="selectMmDeptRangeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_dept AS cDept,
+			SUM(range_date) AS rangeDate
+		FROM mm_range_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY rangeDate
+	</select>
+	<select id="selectMmDeptMedianAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_dept AS cDept,
+			SUM(SUBSTRING_INDEX(median,'.',1)) AS median
+		FROM mm_median_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY median
+	</select>
+	<select id="selectMmDeptModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_dept AS cDept,
+			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+		FROM mm_median_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY mode
+	</select>
+
+
+
+
+	<select id="selectYyDeptMaxAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+    	SELECT
+			c_dept AS cDept,
+			SUM(max_date) AS maxDate
+		FROM yy_range_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY maxDate
+	</select>
+	<select id="selectYyDeptMinAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_dept AS cDept,
+			SUM(min_date) AS minDate
+		FROM yy_range_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY minDate
+	</select>
+	<select id="selectYyDeptRangeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_dept AS cDept,
+			SUM(range_date) AS rangeDate
+		FROM yy_range_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY rangeDate
+	</select>
+	<select id="selectYyDeptMedianAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_dept AS cDept,
+			SUM(SUBSTRING_INDEX(median,'.',1)) AS median
+		FROM yy_median_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY median
+	</select>
+	<select id="selectYyDeptModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_dept AS cDept,
+			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+		FROM yy_median_dept_data
+		WHERE yy = #{date}
+		GROUP BY cDept
+		ORDER BY mode
+	</select>
+
+
+
+
+
+	<select id="selectMmUnitMaxAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_unit AS cUnit,
+			SUM(max_date) AS maxDate
+		FROM mm_range_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY maxDate
+	</select>
+	<select id="selectMmUnitMinAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_unit AS cUnit,
+			SUM(min_date) AS minDate
+		FROM mm_range_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY minDate
+	</select>
+	<select id="selectMmUnitRangeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_unit AS cUnit,
+			SUM(range_date) AS rangeDate
+		FROM mm_range_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY rangeDate
+	</select>
+	<select id="selectMmUnitMedianAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_unit AS cUnit,
+			SUM(SUBSTRING_INDEX(median,'.',1)) AS median
+		FROM mm_median_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY median
+	</select>
+	<select id="selectMmUnitModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_unit AS cUnit,
+			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+		FROM mm_median_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY mode
+	</select>
+
+
+
+	<select id="selectYyUnitMaxAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_unit AS cUnit,
+			SUM(max_date) AS maxDate
+		FROM yy_range_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY maxDate
+	</select>
+	<select id="selectYyUnitMinAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+ 		SELECT
+			c_unit AS cUnit,
+			SUM(min_date) AS minDate
+		FROM yy_range_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY minDate
+	</select>
+	<select id="selectYyUnitRangeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_unit AS cUnit,
+			SUM(range_date) AS rangeDate
+		FROM yy_range_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY rangeDate
+	</select>
+	<select id="selectYyUnitMedianAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_unit AS cUnit,
+			SUM(SUBSTRING_INDEX(median,'.',1)) AS median
+		FROM yy_median_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY median
+	</select>
+	<select id="selectYyUnitModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			c_unit AS cUnit,
+			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+		FROM yy_median_unit_data
+		WHERE yy = #{date}
+		GROUP BY cUnit
+		ORDER BY mode
+	</select>
+
+
+
+	<select id="selectYyNameDateAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			yy,
+			c_name AS cName,
+			c_date AS cDate
+		FROM yy_median_name_data
+		WHERE yy = #{date}
+	</select>
+	<select id="selectMmNameDateAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			yy,
+			c_name AS cName,
+			c_date AS cDate
+		FROM mm_median_name_data
+		WHERE yy = #{date}
+	</select>
+
+
+	<select id="selectYyRegionDateAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			yy,
+			c_Region AS cRegion,
+			c_date AS cDate
+		FROM yy_median_region_data
+		WHERE yy = #{date}
+	</select>
+	<select id="selectMmRegionDateAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			yy,
+			c_region AS cRegion,
+			c_date AS cDate
+		FROM mm_median_region_data
+		WHERE yy = #{date}
+	</select>
+	<select id="selectYyDeptDateAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			yy,
+			c_dept AS cDept,
+			c_date AS cDate
+		FROM yy_median_dept_data
+		WHERE yy = #{date}
+	</select>
+	<select id="selectMmDeptDateAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			yy,
+			c_dept AS cDept,
+			c_date AS cDate
+		FROM mm_median_dept_data
+		WHERE yy = #{date}
+	</select>
+	<select id="selectYyUnitDateAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			yy,
+			c_unit AS cUnit,
+			c_date AS cDate
+		FROM yy_median_unit_data
+		WHERE yy = #{date}
+	</select>
+	<select id="selectMmUnitDateAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
+		SELECT
+			yy,
+			c_unit AS cUnit,
+			c_date AS cDate
+		FROM mm_median_unit_data
+		WHERE yy = #{date}
+	</select>
+
+</mapper>

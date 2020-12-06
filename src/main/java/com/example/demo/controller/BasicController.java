@@ -15,30 +15,28 @@ public class BasicController {
 	
 	@Autowired
 	private UserDAO userDAO;
-	
-	@GetMapping(value = "")
-	public String index() {
-		return "login"; // 此处表示返回值是一个值为“login”的String。不指向界面的原因是类的注解是@RestController
-	}
-	
-	
+
 	@GetMapping(value = "index.do")
 	public ModelAndView index2() {
-		return new ModelAndView("login"); // 此处指向界面
+		return new ModelAndView("login"); //跳转登录页面
 	}
-	
-	
+
+	@GetMapping(value = "demo.do")
+	public ModelAndView demo() {
+		return new ModelAndView("demo"); //测试页面
+	}
+
 	@GetMapping(value = "login.do")
-	public Object login(String name, String password) {
-		System.out.println("传入参数：name=" + name + ", password=" + password);
-		if (StringUtils.isEmpty(name)) {
-			return "name不能为空";
+	public Object login(String username, String password) {
+		System.out.println("传入参数：username=" + username + ", password=" + password);
+		if (StringUtils.isEmpty(username)) {
+			return "username不能为空";
 		} else if (StringUtils.isEmpty(password)) {
 			return "password不能为空";
 		}
-		User user = userDAO.find(name, password);
+		User user = userDAO.find(username, password);
 		if (user != null) {
-			return user;
+			return new ModelAndView("home");
 		} else {
 			return "用户名或密码错误";
 		}

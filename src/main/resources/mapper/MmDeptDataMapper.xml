@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.model.dao.MmDeptDataDao">
+
+
+	<select id="selectAll" resultType="com.example.demo.model.bean.MmDeptData" parameterType="java.lang.String">
+    	SELECT c_dept AS cDept,SUM(c_count) AS cCount
+		FROM
+			mm_c_dept_data
+		WHERE
+			yy = #{date}
+		GROUP BY cDept
+		ORDER BY cCount
+	</select>
+
+
+</mapper>
