@@ -19,6 +19,8 @@ public class Range {
 
 	private String cDate;
 
+	private String modeDate;
+
 	private String maxDate;
 
 	private String minDate;
@@ -125,5 +127,13 @@ public class Range {
 
 	public void setDateList(List<Integer> dateList) {
 		this.dateList = dateList;
+	}
+
+	public String getModeDate() {
+		return modeDate;
+	}
+
+	public void setModeDate(String modeDate) {
+		this.modeDate = modeDate;
 	}
 }

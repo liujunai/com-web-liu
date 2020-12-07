@@ -41,10 +41,9 @@
 	<select id="selectMmNameModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
 		SELECT
 			c_name AS cName,
-			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+			mode_date AS modeDate
 		FROM mm_median_name_data
 		WHERE yy = #{date}
-		GROUP BY cName
 		ORDER BY mode
 	</select>
 
@@ -89,10 +88,9 @@
 	<select id="selectYyNameModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
 		SELECT
 			c_name AS cName,
-			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+			mode_date AS modeDate
 		FROM yy_median_name_data
 		WHERE yy = #{date}
-		GROUP BY cName
 		ORDER BY mode
 	</select>
 
@@ -141,10 +139,9 @@
 	<select id="selectMmRegionModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
 		SELECT
 			c_region AS cRegion,
-			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+			mode_date AS modeDate
 		FROM mm_median_region_data
 		WHERE yy = #{date}
-		GROUP BY cRegion
 		ORDER BY mode
 	</select>
 
@@ -191,10 +188,9 @@
 	<select id="selectYyRegionModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
 		SELECT
 			c_region AS cRegion,
-			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+			mode_date AS modeDate
 		FROM yy_median_region_data
 		WHERE yy = #{date}
-		GROUP BY cRegion
 		ORDER BY mode
 	</select>
 
@@ -242,10 +238,9 @@
 	<select id="selectMmDeptModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
 		SELECT
 			c_dept AS cDept,
-			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+			mode_date AS modeDate
 		FROM mm_median_dept_data
 		WHERE yy = #{date}
-		GROUP BY cDept
 		ORDER BY mode
 	</select>
 
@@ -291,10 +286,9 @@
 	<select id="selectYyDeptModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
 		SELECT
 			c_dept AS cDept,
-			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+			mode_date AS modeDate
 		FROM yy_median_dept_data
 		WHERE yy = #{date}
-		GROUP BY cDept
 		ORDER BY mode
 	</select>
 
@@ -341,10 +335,9 @@
 	<select id="selectMmUnitModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
 		SELECT
 			c_unit AS cUnit,
-			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+			mode_date AS modeDate
 		FROM mm_median_unit_data
 		WHERE yy = #{date}
-		GROUP BY cUnit
 		ORDER BY mode
 	</select>
 
@@ -389,10 +382,9 @@
 	<select id="selectYyUnitModeAll" resultType="com.example.demo.model.bean.Range" parameterType="java.lang.String">
 		SELECT
 			c_unit AS cUnit,
-			SUM(SUBSTRING_INDEX(mode,'.',1)) AS mode
+			mode_date AS modeDate
 		FROM yy_median_unit_data
 		WHERE yy = #{date}
-		GROUP BY cUnit
 		ORDER BY mode
 	</select>
 

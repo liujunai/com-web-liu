@@ -6,8 +6,7 @@ import com.example.demo.model.dao.RangeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class RangeService {
@@ -43,6 +42,7 @@ public class RangeService {
 			if (rangeMode.getValue().equals("mode")) {
 				// 获取 事项名称 c_name 月 众数
 		    	rangeList = rangeDao.selectMmNameModeAll(date);
+		    	this.modeDateMax(rangeList);
 			}
 		}else {
 			if (rangeMode.getValue().equals("max")) {
@@ -64,6 +64,7 @@ public class RangeService {
 			if (rangeMode.getValue().equals("mode")) {
 				// 获取 事项名称 c_name 年 众数
 				rangeList = rangeDao.selectYyNameModeAll(date);
+				this.modeDateMax(rangeList);
 			}
 		}
 		return rangeList;
@@ -97,6 +98,7 @@ public class RangeService {
 			if (rangeMode.getValue().equals("mode")) {
 				// 获取 区划 c_region  月 众数
 				rangeList = rangeDao.selectMmRegionModeAll(date);
+				this.modeDateMax(rangeList);
 			}
 		}else {
 			if (rangeMode.getValue().equals("max")) {
@@ -118,6 +120,7 @@ public class RangeService {
 			if (rangeMode.getValue().equals("mode")) {
 				// 获取 区划 c_region  年 众数
 				rangeList = rangeDao.selectYyRegionModeAll(date);
+				this.modeDateMax(rangeList);
 			}
 		}
 		return rangeList;
@@ -151,6 +154,7 @@ public class RangeService {
 			if (rangeMode.getValue().equals("mode")) {
 				// 获取 受理部门  c_dept 月  众数
 				rangeList = rangeDao.selectMmDeptModeAll(date);
+				this.modeDateMax(rangeList);
 			}
 		}else {
 			if (rangeMode.getValue().equals("max")) {
@@ -172,6 +176,7 @@ public class RangeService {
 			if (rangeMode.getValue().equals("mode")) {
 				// 获取 受理部门  c_dept 年  众数
 				rangeList = rangeDao.selectYyDeptModeAll(date);
+				this.modeDateMax(rangeList);
 			}
 		}
 		return rangeList;
@@ -205,6 +210,7 @@ public class RangeService {
 			if (rangeMode.getValue().equals("mode")) {
 				// 获取 办件提供单位  c_unit 月  众数
 				rangeList = rangeDao.selectMmUnitModeAll(date);
+				this.modeDateMax(rangeList);
 			}
 		}else {
 			if (rangeMode.getValue().equals("max")) {
@@ -226,6 +232,7 @@ public class RangeService {
 			if (rangeMode.getValue().equals("mode")) {
 				// 获取 办件提供单位  c_unit 年  众数
 				rangeList = rangeDao.selectYyUnitModeAll(date);
+				this.modeDateMax(rangeList);
 			}
 		}
 		return rangeList;
@@ -315,5 +322,23 @@ public class RangeService {
 			range.setDateList(dateList);
 		}
 	}
+
+	private void modeDateMax(List<Range> rangeList){
+		for (Range range : rangeList) {
+			String[] modeDateArray = range.getModeDate().split(",");
+			if (modeDateArray.length >1){
+				//1 转换dateArray 类型：String->double
+				Double[] modeDateDoubleArray = new Double[modeDateArray.length];
+				for (int i = 0; i < modeDateArray.length; i++) {
+					modeDateDoubleArray[i] = Double.valueOf(modeDateArray[i]);
+				}
+				double max = Collections.max(Arrays.asList(modeDateDoubleArray));
+				range.setMode(String.valueOf(max));
+			}else {
+				range.setMode(modeDateArray[0]);
+			}
+		}
+	}
+
 
 }
